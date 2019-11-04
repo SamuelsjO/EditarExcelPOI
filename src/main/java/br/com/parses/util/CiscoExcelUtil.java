@@ -1,4 +1,4 @@
-package br.com.cpqd.util;
+package br.com.parses.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +17,7 @@ import org.apache.poi.ss.usermodel.Row;
 public class CiscoExcelUtil {
 
 	private static final String fileName = "C:\\Users\\soliveira\\Desktop\\Planilha.xls";
+//	private static final String fileName = "C:\\Users\\soliveira\\Desktop\\novo.xls";
 
 	static DateFormat ddMMyyyy = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 	static DateFormat yyyyMMdd = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
@@ -36,15 +37,18 @@ public class CiscoExcelUtil {
 				Row row = sheetDate.getRow(i);
 				Cell cellDateUnformatted = row.getCell(47);
 				Cell cellDateUnformatted2 = row.getCell(49);
-				if (cellDateUnformatted.toString() != null && cellDateUnformatted2.toString() != null 
+				if (cellDateUnformatted != null && cellDateUnformatted2 != null 
 						&& cellDateUnformatted.getStringCellValue() != null) {
 					
-					Cell cellDateFormatter = row.getCell(48);
-					Cell cellDateFormatter2 = row.getCell(50);
+					Cell cellDateFormatter = row.getCell(47);
+					sheetDate.autoSizeColumn(48);
+					Cell cellDateFormatter2 = row.getCell(49);
+					sheetDate.autoSizeColumn(50);
 					
 					if (cellDateFormatter == null || cellDateFormatter2 == null) {
-						cellDateFormatter = row.createCell(48);
-						cellDateFormatter2 = row.createCell(50);
+						cellDateFormatter = row.createCell(47);
+						cellDateFormatter2 = row.createCell(49);
+						
 					}
 
 					cellDateFormatter
@@ -53,6 +57,7 @@ public class CiscoExcelUtil {
 					.setCellValue((converteUTFparaData(cellDateUnformatted2.getStringCellValue(), "yyyyMMdd")));
 
 				} 
+				
 				
 			}
 
