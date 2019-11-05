@@ -1,4 +1,4 @@
-package br.com.parses.util;
+package br.com.cpqd.util;
 
 import java.io.File;
 import java.io.FileInputStream;
